@@ -21,13 +21,13 @@
     "resources": [{
             "type": "Microsoft.Web/serverfarms",
             "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
-                "capacity": 1
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
+                "capacity": 0
             },
-            "kind": "linux",
+            "kind": "app",
             "name": "[parameters('app_svc_plan_name')]",
             "apiVersion": "2016-09-01",
             "location": "[resourceGroup().location]",
@@ -38,7 +38,7 @@
                 "adminSiteName": null,
                 "hostingEnvironmentProfile": null,
                 "perSiteScaling": false,
-                "reserved": true,
+                "reserved": false,
                 "targetWorkerCount": 0,
                 "targetWorkerSizeId": 0
             },
@@ -46,7 +46,6 @@
         },
         {
             "type": "Microsoft.Web/sites",
-            "kind": "app,linux",
             "name": "[parameters('site_host_name')]",
             "apiVersion": "2016-08-01",
             "location": "[resourceGroup().location]",
@@ -110,8 +109,6 @@
                 "phpVersion": "",
                 "pythonVersion": "",
                 "nodeVersion": "",
-                "linuxFxVersion": "NODE|8.0",
-                "windowsFxVersion": null,
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
                 "remoteDebuggingVersion": null,
@@ -203,7 +200,6 @@
         },
         {
             "type": "Microsoft.Web/sites/slots",
-            "kind": "app,linux",
             "name": "[concat(parameters('site_host_name'), '/', 'dev')]",
             "apiVersion": "2016-08-01",
             "location": "[resourceGroup().location]",
@@ -268,8 +264,6 @@
                 "phpVersion": "",
                 "pythonVersion": "",
                 "nodeVersion": "",
-                "linuxFxVersion": "NODE|8.0",
-                "windowsFxVersion": null,
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
                 "remoteDebuggingVersion": null,
